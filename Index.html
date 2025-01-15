@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Brainrot Generator</title>
+  <style>
+    body {
+      background-color: #2c3e50;
+      font-family: 'Arial', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      color: white;
+      text-align: center;
+      flex-direction: column;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .brainrot-button {
+      background-color: #e74c3c;
+      color: white;
+      font-size: 18px;
+      padding: 15px 25px;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      z-index: 10;
+    }
+
+    .brainrot-button:hover {
+      background-color: #c0392b;
+    }
+
+    .brainrot-content {
+      position: absolute;
+      font-size: 14px;
+      color: white;
+      z-index: 1;
+      max-width: 200px;
+      border-radius: 12px;
+      transition: all 0.3s ease-in-out;
+    }
+
+    iframe {
+      width: 200px;
+      height: 112px;
+      border-radius: 12px;
+      pointer-events: none; /* Makes the iframe unclickable */
+    }
+
+    img {
+      width: 200px;
+      height: auto;
+      border-radius: 12px;
+    }
+
+  </style>
+</head>
+<body>
+
+  <button class="brainrot-button" onclick="generateBrainrot()">Generate Brainrot</button>
+
+  <script>
+    const brainrotItems = [
+      { type: "video", content: "https://www.youtube.com/embed/eRXE8Aebp7s?autoplay=1&mute=0" },
+      { type: "video", content: "https://www.youtube.com/embed/emL4LESttVo?autoplay=1&mute=0" },
+      { type: "video", content: "https://www.youtube.com/embed/JwIDTvEKM7g?autoplay=1&mute=0" },
+      { type: "video", content: "https://www.youtube.com/embed/lcPTDc9vHkE?autoplay=1&mute=0" },
+      { type: "video", content: "https://www.youtube.com/embed/I4r_Wns4TuU?autoplay=1&mute=0" },
+      { type: "video", content: "https://www.youtube.com/embed/frAhxXbLetk?autoplay=1&mute=0" },
+      { type: "image", content: "https://cdn-0001.qstv.on.epicgames.com/xvLTuocHfyCSUIydqT/image/landscape_comp.jpeg" },
+      { type: "image", content: "https://sjhexpress.com/wp-content/uploads/2024/09/Brainrot001-1-e1726850243537-1200x988.jpg" },
+      { type: "image", content: "https://img.buzzfeed.com/buzzfeed-static/static/2024-10/2/15/campaign_images/d697430887fd/if-you-pass-this-brain-rot-quiz-your-brain-is-100-5-1564-1727882562-0_16x9.jpg" },
+      { type: "image", content: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRO-tN3UXN0FUPynwE-u2H4x2cgjd8HzazrMg&s" },
+      { type: "image", content: "https://i1.sndcdn.com/artworks-nNiqyxEcc0IdmFZo-kBcVBg-t500x500.jpg" },
+      { type: "image", content: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvY2WMc_w2hvOsc6LhJSuGvo1iY9gbT6wYFA&s" },
+      { type: "image", content: "https://uploads.dailydot.com/2024/11/that-feeling-when-knee-surgery-is-tomorrow.jpg?q=65&auto=format&w=760&ar=2:1&fit=crop" },
+      { type: "image", content: "https://us-tuna-sounds-images.voicemod.net/2b357ab7-568e-41bc-b58f-4ecd33b26f94-1712095816824.png" },
+      { type: "image", content: "https://i.ytimg.com/vi/JY9Y19yxevQ/sddefault.jpg" },
+      { type: "image", content: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRQm5EejXP32G92asxdyGLyBG-pwfvxE09sOQ&s" }
+    ];
+
+    function generateBrainrot() {
+      const randomItem = brainrotItems[Math.floor(Math.random() * brainrotItems.length)];
+      const contentDiv = document.createElement("div");
+
+      // Random position on X and Y axis
+      const randomPositionX = `${Math.random() * 90}%`; // Random horizontal position
+      const randomPositionY = `${Math.random() * 90}%`; // Random vertical position
+
+      contentDiv.classList.add("brainrot-content");
+
+      contentDiv.style.left = randomPositionX;
+      contentDiv.style.top = randomPositionY;
+
+      if (randomItem.type === "image") {
+        contentDiv.innerHTML = `<img src="${randomItem.content}" />`;
+      } else if (randomItem.type === "video") {
+        contentDiv.innerHTML = `<iframe src="${randomItem.content}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>`;
+      }
+
+      document.body.appendChild(contentDiv);
+    }
+  </script>
+
+</body>
+</html>
